@@ -5,14 +5,15 @@ import hashlib
 import hmac
 import json
 import time
+import os
 import requests
 
 base_url = "https://api.sandbox.gemini.com"
 endpoint = "/v1/order/new"
 buy_url = base_url + endpoint
 
-gemini_api_key = "account-r3ZtKF679fyBf9YcrizA"
-gemini_api_secret = "3qexGvFD44JA5A45So66Eh7RvU25".encode()
+gemini_api_key = os.environ["GEMINI_API"]
+gemini_api_secret = os.environ['API_SECRET'].encode()
 
 t = datetime.datetime.now()
 payload_nonce = str(int(time.mktime(t.timetuple()) * 1000))

@@ -2,12 +2,13 @@ import datamanager
 import requests
 import broker
 import time
+import os
 
 order_avg = 0
 indicator = "rsi"
 rsi_endpoint = f"https://api.taapi.io/{indicator}"
 base_url = "https://api.sandbox.gemini.com/v2"
-sheety_get = 'https://api.sheety.co/deb8a34c5c18b45a1591ceef44bb653a/tradeBotData2/data'
+sheety_get = os.environ['SHEETY_ENDPOINT']
 btc_data_endpoint = requests.get(base_url + "/candles/btcusd/1hr")
 
 btc_data_json = btc_data_endpoint.json()

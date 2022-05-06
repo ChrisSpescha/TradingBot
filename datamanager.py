@@ -1,9 +1,10 @@
 from datetime import datetime
 import requests
+import os
 
-SHEETY_ENDPOINT = 'https://api.sheety.co/deb8a34c5c18b45a1591ceef44bb653a/tradeBotData2/data'
-SHEETY_DELETE = 'https://api.sheety.co/deb8a34c5c18b45a1591ceef44bb653a/tradeBotData2/data/'
-SHEETY_GAIN_LOSS = 'https://api.sheety.co/deb8a34c5c18b45a1591ceef44bb653a/tradeBotGainLoss/data'
+SHEETY_ENDPOINT = os.environ['SHEETY_ENDPOINT']
+SHEETY_DELETE = os.environ['SHEETY_DELETE']
+SHEETY_GAIN_LOSS = os.environ['SHEETY_GAIN_LOSS']
 today_date = datetime.now().strftime("%d/%m/%Y")
 now_time = datetime.now().strftime("%X")
 
