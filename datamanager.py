@@ -1,10 +1,6 @@
 from datetime import datetime
-import requests
-import os
+import pandas as pd
 
-SHEETY_ENDPOINT = os.environ['SHEETY_ENDPOINT']
-SHEETY_DELETE = os.environ['SHEETY_DELETE']
-SHEETY_GAIN_LOSS = os.environ['SHEETY_GAIN_LOSS']
 today_date = datetime.now().strftime("%d/%m/%Y")
 now_time = datetime.now().strftime("%X")
 
@@ -12,38 +8,35 @@ now_time = datetime.now().strftime("%X")
 def add_new_order(order_id, price, amount, order_type):
     price = float(price)
     amount = float(amount)
-    sheet_inputs = {
-        "datum": {
-            "date": today_date,
-            "time": now_time,
-            "key": order_id,
-            "price": price,
-            "amount": amount,
-            "order": order_type
-        }
-    }
-    sheet_response = requests.post(SHEETY_ENDPOINT, json=sheet_inputs)
-    print(sheet_response.text)
+    trade_df = pd.read_csv('buy_orders.csv')
+    new_order = [{
+            "Index": len(trade_df),
+            "Date": today_date,
+            "Time": now_time,
+            "Key": order_id,
+            "Price": price,
+            "Amount": amount,
+            "Order": order_type
+        }]
+    new_trade_df = pd.DataFrame(new_order)
+    new_trade_df.to_csv("buy_orders.csv", mode="a", index=False, header=False)
 
 
-def get_gain_loss(avg_buy, price_sold, balance):
+def new_sell_order(avg_buy, price_sold, balance):
     pct_gain_loss = ((price_sold - avg_buy) / avg_buy) * 100
-    sheet_inputs = {
-        "datum": {
-            "date": today_date,
-            "time": now_time,
-            "bought": avg_buy,
-            "sold": price_sold,
-            'balance': balance,
-            "pct": pct_gain_loss,
-        }
-    }
-    sheet_response = requests.post(SHEETY_GAIN_LOSS, json=sheet_inputs)
-    print(sheet_response.text)
+    new_order = [{
+            "Date": today_date,
+            "Time": now_time,
+            "Price_Sold": price_sold,
+            "Amount": balance,
+            'Buy_Avg': avg_buy,
+            "PCT_gain/loss": pct_gain_loss,
+        }]
+    new_trade_df = pd.DataFrame(new_order)
+    new_trade_df.to_csv("sell_orders.csv", mode="a", index=False, header=False)
 
 
 def update_order_data():
-    response = requests.get(SHEETY_ENDPOINT)
-    data_json = response.json()
-    for _ in data_json['data']:
-        requests.delete(SHEETY_DELETE + "2")
+    column_names = ["Date", "Time", "Key", "Price", "Amount", "Order"]
+    trade_df = pd.DataFrame(columns=column_names)
+    trade_df.to_csv('buy_orders.csv')

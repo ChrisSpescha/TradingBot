@@ -54,9 +54,8 @@ def place_order(order_type, amount):
                              data=None,
                              headers=request_headers)
     new_order = response.json()
-    print(new_order)
-    # if not new_order['is_cancelled']: <---- correct logic
-    if new_order:
+
+    if not new_order['is_cancelled']:
         datamanager.add_new_order(new_order['order_id'],
                                   new_order['price'],
                                   new_order['original_amount'],
