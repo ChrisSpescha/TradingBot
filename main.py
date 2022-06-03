@@ -38,7 +38,6 @@ rsi_response = requests.get(url=rsi_endpoint, params=params)
 rsi_json = rsi_response.json()
 rsi = rsi_json['value']
 
-
 count = 0
 trade = True
 while count < 5 and trade:
@@ -47,7 +46,8 @@ while count < 5 and trade:
         trade = False
     elif order_avg != 0:
         if rsi > 50 and balance > 0 and current_price > order_avg:
-            broker.place_order('sell', f"{balance}")
+            rounded_balance = round(balance, 4)
+            broker.place_order('sell', f"{rounded_balance}")
             datamanager.new_sell_order(order_avg, current_price, balance)
             datamanager.update_order_data()
             trade = False
