@@ -1,5 +1,6 @@
 from datetime import datetime
 import pandas as pd
+import csv
 
 today_date = datetime.now().strftime("%d/%m/%Y")
 now_time = datetime.now().strftime("%X")
@@ -37,6 +38,12 @@ def new_sell_order(avg_buy, price_sold, balance):
 
 
 def update_order_data():
+    # column_names = ["Date", "Time", "Key", "Price", "Amount", "Order"]
+    # trade_df = pd.DataFrame(columns=column_names)
+    # trade_df.to_csv('buy_orders.csv')
+    f = open('buy_orders.csv', 'w+')
+    f.close()
     column_names = ["Date", "Time", "Key", "Price", "Amount", "Order"]
-    trade_df = pd.DataFrame(columns=column_names)
-    trade_df.to_csv('buy_orders.csv')
+    with open('buy_orders.csv', 'w', encoding='UTF8', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(column_names)
