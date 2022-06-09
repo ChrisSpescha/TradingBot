@@ -16,8 +16,8 @@ btc_data_endpoint = requests.get(base_url + "/candles/btcusd/1hr")
 btc_data_json = btc_data_endpoint.json()
 current_price = btc_data_json[0][4]
 
-price_list = []  # list of order prices in buy_orders.csv
-orders_df = pd.read_csv('buy_orders.csv')
+price_list = []  # list of order prices in balance.csv
+orders_df = pd.read_csv('balance.csv')
 for index, row in orders_df.iterrows():
     price_list.append(row['Price'])
 # Avg buy price
@@ -34,10 +34,10 @@ params = {
     "interval": "1h"
 }
 # Retrieve Rsi Data
-rsi_response = requests.get(url=rsi_endpoint, params=params)
-rsi_json = rsi_response.json()
-rsi = rsi_json['value']
-
+# rsi_response = requests.get(url=rsi_endpoint, params=params)
+# rsi_json = rsi_response.json()
+# rsi = rsi_json['value']
+rsi = 25
 
 count = 0
 trade = True

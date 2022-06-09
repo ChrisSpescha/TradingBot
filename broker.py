@@ -60,3 +60,8 @@ def place_order(order_type, amount):
                                   new_order['price'],
                                   new_order['original_amount'],
                                   new_order['side'])
+
+        datamanager.add_to_balance(new_order['order_id'],
+                                   new_order['price'],
+                                   new_order['original_amount'],
+                                   new_order['side'])
