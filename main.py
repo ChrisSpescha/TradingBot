@@ -34,10 +34,9 @@ params = {
     "interval": "1h"
 }
 # Retrieve Rsi Data
-# rsi_response = requests.get(url=rsi_endpoint, params=params)
-# rsi_json = rsi_response.json()
-# rsi = rsi_json['value']
-rsi = 25
+rsi_response = requests.get(url=rsi_endpoint, params=params)
+rsi_json = rsi_response.json()
+rsi = rsi_json['value']
 
 count = 0
 trade = True
