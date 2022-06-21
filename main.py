@@ -34,17 +34,20 @@ params = {
     "interval": "1h"
 }
 # Retrieve Rsi Data
-rsi_response = requests.get(url=rsi_endpoint, params=params)
-rsi_json = rsi_response.json()
-rsi = rsi_json['value']
+# rsi_response = requests.get(url=rsi_endpoint, params=params)
+# rsi_json = rsi_response.json()
+rsi = 60
 
 count = 0
 trade = True
 while count < 5 and trade:
+    print('loop start')
     if rsi < 30:
+        print('buy block')
         broker.place_order('buy', '.001')
         trade = False
     elif order_avg != 0:
+        print('sell block')
         if rsi > 50 and balance > 0 and current_price > order_avg:
             rounded_balance = round(balance, 4)
             broker.place_order('sell', f"{rounded_balance}")
@@ -58,6 +61,7 @@ while count < 5 and trade:
                 datamanager.new_sell_order(order_avg, current_price, balance)
                 datamanager.update_order_data()
                 trade = False
+        count += 1
     else:
         count += 1
         time.sleep(1)
