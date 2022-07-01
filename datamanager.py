@@ -24,7 +24,8 @@ def add_to_balance(order_id, price, amount, order_type):
 
 
 def new_sell_order(avg_buy, price_sold, balance):
-    pct_gain_loss = ((price_sold - avg_buy) / avg_buy) * 100
+    pct = ((price_sold - avg_buy) / avg_buy) * 100
+    pct_gain_loss = round(pct, 2)
     new_order = [{
             "Date": today_date,
             "Time": now_time,
