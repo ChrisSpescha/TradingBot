@@ -10,3 +10,5 @@ so even with the built in stop loss of 3%, if bitcoin has a knife drop candle (w
 so I'll have to find a hosting service that runs the code continuously or maybe every few minutes, without it being too expensive.
 
 will start to build application pipeline with analytical ends 
+
+contstructing pipeline with microsoft azure
