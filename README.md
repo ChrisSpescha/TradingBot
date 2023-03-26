@@ -11,4 +11,4 @@ so I'll have to find a hosting service that runs the code continuously or maybe 
 
 will start to build application pipeline with analytical ends 
 
-contstructing pipeline with microsoft azure
+constructing pipeline with microsoft azure
