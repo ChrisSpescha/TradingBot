@@ -12,3 +12,7 @@ so I'll have to find a hosting service that runs the code continuously or maybe 
 will start to build application pipeline with analytical ends 
 
 constructing pipeline with microsoft azure
+
+
+-----
+1 year update, bot has been successful on gemini sandbox API through bear and bull market. will activate live account.
