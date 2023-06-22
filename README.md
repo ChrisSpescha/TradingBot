@@ -16,3 +16,7 @@ constructing pipeline with microsoft azure
 
 -----
 1 year update, bot has been successful on gemini sandbox API through bear and bull market. will activate live account.
+
+------
+.40% taker fee 
+.20% maker fee
