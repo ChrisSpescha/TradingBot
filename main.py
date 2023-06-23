@@ -44,7 +44,7 @@ while count < 5 and trade:
     print('loop start')
     if rsi < 30:
         print('buy block')
-        broker.place_order('buy', '.001')
+        broker.place_order('buy', '.0005')
         trade = False
     elif order_avg != 0:
         print('sell block')
