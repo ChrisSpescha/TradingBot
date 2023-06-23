@@ -28,15 +28,15 @@ for index, row in orders_df.iterrows():
     balance += row['Amount']
 
 params = {
-    "secret": os.environ['TA_SECRET'],
+    "secret": os.environ['SECRET'],
     "exchange": "binance",
     "symbol": "BTC/USDT",
     "interval": "1h"
 }
 # Retrieve Rsi Data
-# rsi_response = requests.get(url=rsi_endpoint, params=params)
-# rsi_json = rsi_response.json()
-rsi = 60
+rsi_response = requests.get(url=rsi_endpoint, params=params)
+rsi_json = rsi_response.json()
+rsi = rsi_json['value']
 
 count = 0
 trade = True
@@ -44,7 +44,7 @@ while count < 5 and trade:
     print('loop start')
     if rsi < 30:
         print('buy block')
-        broker.place_order('buy', '.001')
+        broker.place_order('buy', '.0005')
         trade = False
     elif order_avg != 0:
         print('sell block')
@@ -64,4 +64,5 @@ while count < 5 and trade:
         count += 1
     else:
         count += 1
+        time.sleep(1)
         time.sleep(1)
