@@ -1,18 +1,49 @@
-# TradingBot
-Automated Trading with python via Gemini API
------
-thinking about the trading bot
+💹 Gemini RSI Trading Bot
+A Python-based automated trading bot that uses the Relative Strength Index (RSI) to make buy and sell decisions for Bitcoin via the Gemini API. Built with an object-oriented design for clarity, modularity, and ease of maintenance.
 
-my only concern is that the cloud service I'm using only executes the code every hour.
+📁 Project Structure
+gemini-rsi-bot/
+├── broker.py   # Handles Gemini API integration and trade execution
+├── main.py     # Gathers market data, calculates RSI, and makes trading decisions
+├── README.md   # Project documentation
+⚙️ Features
+📈 RSI-Based Strategy: Uses the RSI indicator to identify overbought and oversold conditions.
+🔁 Automated Trading: Executes buy/sell orders through Gemini's secure API.
+🧱 Object-Oriented Design: Clean separation of concerns between trading logic and API handling.
+🔐 Secure API Handling: Keeps your API keys safe and uses best practices for authentication.
+🧠 How It Works
+main.py:
 
-so even with the built in stop loss of 3%, if bitcoin has a knife drop candle (which is not unlikely) in between windows it could loose a lot more that 3%
+Fetches real-time Bitcoin price data.
+Calculates the RSI using historical price data.
+Makes a decision to buy, sell, or hold based on RSI thresholds.
+broker.py:
 
-so I'll have to find a hosting service that runs the code continuously or maybe every few minutes, without it being too expensive.
+Connects to the Gemini API.
+Executes trades securely.
+Handles API authentication and error management.
+📊 RSI Strategy
+Buy Signal: RSI < 30 (oversold)
+Sell Signal: RSI > 70 (overbought)
+Hold: RSI between 30 and 70
+These thresholds can be customized in the code to suit your trading preferences.
 
-will start to build application pipeline with analytical ends 
+🚀 Getting Started
+1. Clone the Repository
 
-constructing pipeline with microsoft azure
+2. Install Dependencies
 
+3. Set Up Environment Variables
+Create a .env file with your Gemini API credentials:
+
+
+4. Run the Bot
+
+🛡️ Disclaimer
+This bot is for educational purposes only. Trading cryptocurrencies involves significant risk. Use at your own discretion and always test thoroughly before deploying with real funds.
+
+📬 Contributions
+Contributions, issues, and feature requests are welcome! Feel free to fork the repo and submit a pull request.
 
 -----
 1 year update, bot has been successful on gemini sandbox API through bear and bull market. will activate live account.
