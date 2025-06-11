@@ -7,10 +7,15 @@ gemini-rsi-bot/
 ├── main.py     # Gathers market data, calculates RSI, and makes trading decisions
 ├── README.md   # Project documentation
 ⚙️ Features
+
 📈 RSI-Based Strategy: Uses the RSI indicator to identify overbought and oversold conditions.
+
 🔁 Automated Trading: Executes buy/sell orders through Gemini's secure API.
+
 🧱 Object-Oriented Design: Clean separation of concerns between trading logic and API handling.
+
 🔐 Secure API Handling: Keeps your API keys safe and uses best practices for authentication.
+
 🧠 How It Works
 main.py:
 
