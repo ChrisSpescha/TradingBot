@@ -1,11 +1,6 @@
 💹 Gemini RSI Trading Bot
 A Python-based automated trading bot that uses the Relative Strength Index (RSI) to make buy and sell decisions for Bitcoin via the Gemini API. Built with an object-oriented design for clarity, modularity, and ease of maintenance.
 
-📁 Project Structure
-gemini-rsi-bot/
-├── broker.py   # Handles Gemini API integration and trade execution
-├── main.py     # Gathers market data, calculates RSI, and makes trading decisions
-├── README.md   # Project documentation
 ⚙️ Features
 
 📈 RSI-Based Strategy: Uses the RSI indicator to identify overbought and oversold conditions.
